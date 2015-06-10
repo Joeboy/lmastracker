@@ -1,0 +1,10 @@
+{% extends 'castcrews/base.html' %}
+
+{% block content %}
+<h2>Films</h2>
+<ul>
+{% for film in film_list %}
+<li><a href="{% url "show-film" pk=film.id %}">{{ film.title }}</a></li>
+{% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'castcrews/base.html' %}
+
+{% block content %}
+<h2>{{ person.name }}</h2>
+
+<h3>Cast</h3>
+
+<ul>
+{% for billing in person.billing_set.all %}
+{% ifequal billing.role.name 'Actor' %}
+    <li>
+    <a href="{% url "show-film" billing.film.pk %}">{{ billing.film.title }}</a>:
+    <a href="{% url "show-role" billing.role.pk %}">{% if billing.extra %}{{ billing.extra }}{% else %}Actor{% endif %}</a>
+    </li>
+{% endifequal %}
+{% endfor %}
+</ul>
+
+<h3>Crew</h3>
+<ul>
+{% for billing in person.billing_set.all %}
+{% ifnotequal billing.role.name 'Actor' %}
+    <li>
+        <a href="{% url "show-film" billing.film.pk %}">{{ billing.film.title }}</a>:
+        <a href="{% url "show-role" billing.role.id %}">{{ billing.role.name }}</a>
+    </li>
+{% endifnotequal %}
+{% endfor %}
+</ul>
+
+{% endblock %}

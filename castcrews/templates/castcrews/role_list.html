@@ -1,0 +1,10 @@
+{% extends 'castcrews/base.html' %}
+
+{% block content %}
+<h2>Roles</h2>
+<ul>
+{% for role in role_list %}
+<li><a href="{% url "show-role" pk=role.id %}">{{ role.name }}</a></li>
+{% endfor %}
+</ul>
+{% endblock %}

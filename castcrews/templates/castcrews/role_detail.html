@@ -1,0 +1,15 @@
+{% extends 'castcrews/base.html' %}
+
+{% block content %}
+<h2>{{ role.name }}</h2>
+
+<ul>
+{% for billing in role.billing_set.all %}
+    <li>
+        <a href="{% url "show-film" billing.film.pk %}">{{ billing.film.title }}</a>:
+        <a href="{% url "show-person" billing.person.id %}">{{ billing.person.name }}</a>
+    </li>
+{% endfor %}
+</ul>
+
+{% endblock %}

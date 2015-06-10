@@ -1,0 +1,10 @@
+{% extends 'castcrews/base.html' %}
+
+{% block content %}
+
+<p>A thingummy for finding out who did what on LMAS films.</p>
+
+<p><a href="{% url 'browse-films' %}">Browse films</a></p>
+<p><a href="{% url 'browse-people' %}">Browse people</a></p>
+<p><a href="{% url 'browse-roles' %}">Browse roles</a></p>
+{% endblock %}
